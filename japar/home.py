@@ -1,5 +1,5 @@
 from flask import Blueprint
-from tavern.db import get_db
+from japar.db import get_db
 
 bp = Blueprint('home', __name__)
 

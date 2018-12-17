@@ -1,0 +1,1 @@
+web: gunicorn japar.run:app --log-file -

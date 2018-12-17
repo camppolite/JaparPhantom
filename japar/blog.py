@@ -3,8 +3,8 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 
-from tavern.auth import login_required
-from tavern.db import get_db
+from japar.auth import login_required
+from japar.db import get_db
 
 bp = Blueprint('blog', __name__, url_prefix='/blog')
 
