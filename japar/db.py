@@ -1,6 +1,6 @@
 import pymysql.cursors
-
 from flask import g
+import configparser
 
 
 def get_db():
@@ -8,12 +8,21 @@ def get_db():
     is unique for each request and will be reused if this is called
     again.
     """
+    config = configparser.ConfigParser()
+    config.read("../config/database.conf")
+    mysql = config["MySQL"]
+    host = mysql["host"]
+    port = mysql["port"]
+    user = mysql["user"]
+    password = mysql["password"]
+    db = mysql["db"]
+
     if 'db' not in g:
-        g.db = pymysql.connect(host='192.168.64.133',
-                               port=3306,
-                               user='root',
-                               password='123456',
-                               db='shenghuokezhan',
+        g.db = pymysql.connect(host=host,
+                               port=port,
+                               user=user,
+                               password=password,
+                               db=db,
                                charset='utf8mb4',
                                cursorclass=pymysql.cursors.DictCursor)
 

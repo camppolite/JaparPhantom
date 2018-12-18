@@ -1,5 +1,5 @@
-CREATE DATABASE shenghuokezhan DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
-USE shenghuokezhan;
+CREATE DATABASE japarphantom DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE japarphantom;
 
 --  username password
 CREATE TABLE thedoor (
