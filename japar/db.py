@@ -13,6 +13,7 @@ def get_db():
     except ImportError:
         import configparser
         config = configparser.ConfigParser()
+        print("从本地读取数据库配置信息")
         config.read("../config/database.conf")
 
         mysql = config["MySQL"]
@@ -24,6 +25,7 @@ def get_db():
     else:
         from urllib.parse import urlparse
         if 'CLEARDB_DATABASE_URL' in os.environ:
+            print("从服务器环境变量读取数据库配置信息")
             url = urlparse(os.environ['CLEARDB_DATABASE_URL'])
             dbconf = url.netloc
             host = dbconf.split("@")[1]
@@ -31,9 +33,9 @@ def get_db():
             user = dbconf.split(":")[0]
             password = dbconf.split("@")[0].split(":")[1]
             db = url.path[1:]
-            print(dbconf, host, user, password, db)
     finally:
         if 'db' not in g:
+            print("连接数据库...")
             g.db = pymysql.connect(host=host,
                                    port=port,
                                    user=user,
