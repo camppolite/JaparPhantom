@@ -18,7 +18,7 @@ app.config.from_pyfile("config.py", silent=True)
 # apply the blueprints to the app
 from japar import auth, blog, home
 app.register_blueprint(home.bp)
-# app.register_blueprint(auth.bp)
+app.register_blueprint(auth.bp)
 # app.register_blueprint(blog.bp)
 
 

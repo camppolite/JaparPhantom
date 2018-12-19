@@ -53,9 +53,9 @@ def register():
         if not username or not password:
             error = 'Username or Password is required.'
         elif len(username) > 512:
-            error = 'Username is longer than 512.'
+            error = 'Username is longer than 255.'
         elif len(password) > 512:
-            error = 'Password is longer than 512.'
+            error = 'Password is longer than 255.'
         else:
             with get_db().cursor() as cursor:
                 cursor.execute(
