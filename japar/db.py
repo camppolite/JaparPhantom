@@ -1,7 +1,7 @@
 import pymysql.cursors
 from flask import g
 import os
-
+import configparser
 
 def get_db():
     """Connect to the application's configured database. The connection
@@ -11,14 +11,13 @@ def get_db():
     from urllib.parse import urlparse
     url = urlparse(os.environ['CLEARDB_DATABASE_URL'])
     print(url)
-
+    print(url.netloc)
+    config = configparser.ConfigParser()
+    config.read("../config/database.conf")
+    mysql = config["MySQL"]
     try:
         from boto.s3.connection import S3Connection
     except ImportError:
-        import configparser
-        config = configparser.ConfigParser()
-        config.read("../config/database.conf")
-        mysql = config["MySQL"]
         host = mysql["host"]
         port = mysql["port"]
         user = mysql["user"]
@@ -26,13 +25,14 @@ def get_db():
         db = mysql["db"]
     else:
         from urllib.parse import urlparse
-        if 'DATABASE_URL' in os.environ:
+        if 'CLEARDB_DATABASE_URL' in os.environ:
             url = urlparse(os.environ['CLEARDB_DATABASE_URL'])
             print(url)
-        s3 = S3Connection(os.environ['CLEARDB_DATABASE_URL'], os.environ['CLEARDB_DATABASE_URL'])
-        print(s3)
-
-
+            host = url["host"]
+            port = 3306
+            user = url["user"]
+            password = url["password"]
+            db = mysql["db"]
     if 'db' not in g:
         g.db = pymysql.connect(host=host,
                                port=port,
