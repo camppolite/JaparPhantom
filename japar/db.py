@@ -13,8 +13,10 @@ def get_db():
     print(url)
     print(url.netloc)
     config = configparser.ConfigParser()
-    config.read("../config/database.conf")
-    print(config.read("../config/database.conf"))
+    conf = config.read("../config/database.conf")
+    if conf is None:
+        conf = config.read("./config/database.conf")
+    print(conf)
     mysql = config["MySQL"]
     try:
         from boto.s3.connection import S3Connection
