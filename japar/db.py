@@ -1,6 +1,6 @@
 import pymysql.cursors
 from flask import g
-import configparser
+import os
 
 
 def get_db():
@@ -8,14 +8,28 @@ def get_db():
     is unique for each request and will be reused if this is called
     again.
     """
-    config = configparser.ConfigParser()
-    config.read("../config/database.conf")
-    mysql = config["MySQL"]
-    host = mysql["host"]
-    port = mysql["port"]
-    user = mysql["user"]
-    password = mysql["password"]
-    db = mysql["db"]
+    from urllib.parse import urlparse
+    url = urlparse(os.environ['DATABASE_URL'])
+    print(url)
+    
+    try:
+        from boto.s3.connection import S3Connection
+    except ImportError:
+        import configparser
+        config = configparser.ConfigParser()
+        config.read("../config/database.conf")
+        mysql = config["MySQL"]
+        host = mysql["host"]
+        port = mysql["port"]
+        user = mysql["user"]
+        password = mysql["password"]
+        db = mysql["db"]
+    else:
+        from urllib.parse import urlparse
+        url = urlparse(os.environ['DATABASE_URL'])
+        print(url)
+        s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+
 
     if 'db' not in g:
         g.db = pymysql.connect(host=host,
