@@ -8,9 +8,9 @@ def get_db():
     is unique for each request and will be reused if this is called
     again.
     """
-    # from urllib.parse import urlparse
-    # url = urlparse(os.environ['DATABASE_URL'])
-    # print(url)
+    from urllib.parse import urlparse
+    url = urlparse(os.environ['DATABASE_URL'])
+    print(url)
 
     try:
         from boto.s3.connection import S3Connection
