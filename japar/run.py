@@ -2,7 +2,10 @@
 
 import os
 from flask import Flask
+import logging
 
+logging.basicConfig(level=logging.INFO)
+LOG = logging.getLogger("logger.py")
 
 app = Flask(__name__, instance_relative_config=True)
 # ensure the instance folder exists
