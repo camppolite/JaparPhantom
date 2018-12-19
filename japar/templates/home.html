@@ -30,12 +30,7 @@
   <meta name="apple-mobile-web-app-title" content="镜花魅影(JaparPhantom)">
 
   <title>镜花魅影(JaparPhantom) - 创作你的创作</title>
-
-  <meta name="csrf-param" content="authenticity_token">
-  <meta name="csrf-token" content="AG3zyqxXe6r7UONJ7KsIznkml5i17rwYsR9uGkCmqDFAOMKCPbhi7629labWQhb8jwDp6VMFIiwNmcTrapT9qw==">
-
   <link rel="stylesheet" media="all" href="{{ url_for('static', filename='home/web-4d59548b691b7b5c11d8.css') }}">
-  
   <link rel="stylesheet" media="all" href="{{ url_for('static', filename='home/entry-cfaf52c5b8c8596faac8.css') }}">
 
   <style type="text/css">
@@ -52,12 +47,9 @@
       <!-- 未登录显示登录/注册/写文章 -->
       <a class="btn write-btn" target="_blank" href="{{ url_for('home.index') }}">
         <i class="iconfont ic-write"></i>写文章
-</a>      <a class="btn sign-up" id="sign_up" href="{{ url_for('home.index') }}">注册</a>
-      <a class="btn log-in" id="sign_in" href="{{ url_for('home.index') }}">登录</a>
+</a>      <a class="btn sign-up" id="sign_up" href="{{ url_for('auth.register') }}">注册</a>
+      <a class="btn log-in" id="sign_in" href="{{ url_for('auth.login') }}">登录</a>
 
-    <!-- 如果用户登录，显示下拉菜单 -->
-
-    <div class="style-mode"><a class="style-mode-btn"><i class="iconfont ic-navigation-mode"></i></a> <div class="popover-modal" style="left: 0px; display: none;"><div class="meta"><i class="iconfont ic-navigation-night"></i><span>夜间模式</span></div> <div class="switch day-night-group"><a class="switch-btn">开</a> <a class="switch-btn active">关</a></div> <hr> <div class="switch font-family-group"><a class="switch-btn font-song">宋体</a> <a class="switch-btn font-hei active">黑体</a></div> <div class="switch"><a class="switch-btn active">简</a> <a class="switch-btn">繁</a></div></div></div>
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
@@ -73,7 +65,7 @@
                 <span class="menu-text">首页</span><i class="iconfont ic-navigation-discover menu-icon"></i>
 </a>            </li>
             <li class="tab ">
-              <a id="web-nav-app-download-btn" class="{{ url_for('home.index') }}"><span class="menu-text">下载App</span><i class="iconfont ic-navigation-download menu-icon"></i></a>
+              <a id="web-nav-app-download-btn" class="{{ url_for('home.index') }}"><span class="menu-text">生活小常识</span><i class="iconfont ic-navigation-download menu-icon"></i></a>
             </li>
           <li class="search">
             <form target="_blank" action="{{ url_for('home.index') }}" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
