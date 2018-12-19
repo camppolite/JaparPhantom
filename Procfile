@@ -1,1 +1,1 @@
-web: gunicorn japar.__init__:app --log-file -
+web: gunicorn japar.run:app --log-file -
