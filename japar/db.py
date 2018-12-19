@@ -8,9 +8,9 @@ def get_db():
     is unique for each request and will be reused if this is called
     again.
     """
-    from urllib.parse import urlparse
-    url = urlparse(os.environ['DATABASE_URL'])
-    print(url)
+    # from urllib.parse import urlparse
+    # url = urlparse(os.environ['DATABASE_URL'])
+    # print(url)
 
     try:
         from boto.s3.connection import S3Connection
@@ -26,9 +26,11 @@ def get_db():
         db = mysql["db"]
     else:
         from urllib.parse import urlparse
-        url = urlparse(os.environ['DATABASE_URL'])
-        print(url)
-        s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+        if 'DATABASE_URL' in os.environ:
+            url = urlparse(os.environ['DATABASE_URL'])
+            print(url)
+        s3 = S3Connection(os.environ['DATABASE_URL'], os.environ['DATABASE_URL'])
+        print(s3)
 
 
     if 'db' not in g:
