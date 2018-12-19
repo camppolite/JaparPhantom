@@ -43,6 +43,7 @@ def get_db():
                                    db=db,
                                    charset='utf8mb4',
                                    cursorclass=pymysql.cursors.DictCursor)
+            print("连接数据库成功")
 
     return g.db
 

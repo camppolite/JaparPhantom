@@ -15,7 +15,7 @@ def index():
         auth_inf = cursor.fetchall()
 
         cursor.execute(
-            'SELECT ar.id, art_inf_uid, created, edited, arttitle, bcontexts, tag, rcount, awesome, oppose'
+            'SELECT ar.id, art_inf_uid, created, arttitle, bcontexts, tag, rcount, awesome, oppose'
             ' FROM art_inf ar'
         )
         art_inf = cursor.fetchall()
