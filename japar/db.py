@@ -28,8 +28,8 @@ def get_db():
             dbconf = url.netloc
             host = dbconf.split("@")[1]
             port = 3306
-            user = dbconf.split("@")[0].split(":")[1]
-            password = dbconf.split(":")
+            user = dbconf.split(":")[0]
+            password = dbconf.split("@")[0].split(":")[1]
             db = url.path[1:]
             print(dbconf, host, user, password, db)
     finally:
