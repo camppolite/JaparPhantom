@@ -3,6 +3,7 @@ from flask import g
 import os
 import configparser
 
+
 def get_db():
     """Connect to the application's configured database. The connection
     is unique for each request and will be reused if this is called
@@ -16,6 +17,10 @@ def get_db():
     conf = config.read("../config/database.conf")
     if conf is None:
         conf = config.read("./config/database.conf")
+        if conf is None:
+            conf = config.read("/config/database.conf")
+            if conf is None:
+                conf = config.read("config/database.conf")
     print(conf)
     mysql = config["MySQL"]
     try:
