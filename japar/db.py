@@ -9,7 +9,7 @@ def get_db():
     again.
     """
     from urllib.parse import urlparse
-    url = urlparse(os.environ['DATABASE_URL'])
+    url = urlparse(os.environ['CLEARDB_DATABASE_URL'])
     print(url)
 
     try:
@@ -27,9 +27,9 @@ def get_db():
     else:
         from urllib.parse import urlparse
         if 'DATABASE_URL' in os.environ:
-            url = urlparse(os.environ['DATABASE_URL'])
+            url = urlparse(os.environ['CLEARDB_DATABASE_URL'])
             print(url)
-        s3 = S3Connection(os.environ['DATABASE_URL'], os.environ['DATABASE_URL'])
+        s3 = S3Connection(os.environ['CLEARDB_DATABASE_URL'], os.environ['CLEARDB_DATABASE_URL'])
         print(s3)
 
 
