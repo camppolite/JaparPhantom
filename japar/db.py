@@ -14,6 +14,7 @@ def get_db():
     print(url.netloc)
     config = configparser.ConfigParser()
     config.read("../config/database.conf")
+    print(config.read("../config/database.conf"))
     mysql = config["MySQL"]
     try:
         from boto.s3.connection import S3Connection
