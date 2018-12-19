@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html><!--<![endif]--><head>
+<html>
+  <title>{% block title %}{% endblock %} - 镜花魅影(JaparPhantom)</title>
+<head>
+  <link rel="stylesheet" media="all" href="{{ url_for('static', filename='home/web-4d59548b691b7b5c11d8.css') }}">
+  <link rel="stylesheet" media="all" href="{{ url_for('static', filename='home/entry-cfaf52c5b8c8596faac8.css') }}">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -28,13 +32,8 @@
 
   <!-- Apple -->
   <meta name="apple-mobile-web-app-title" content="镜花魅影(JaparPhantom)">
+</head>
 
-  <title>镜花魅影(JaparPhantom) - 创作你的创作</title>
-  <link rel="stylesheet" media="all" href="{{ url_for('static', filename='home/web-4d59548b691b7b5c11d8.css') }}">
-  <link rel="stylesheet" media="all" href="{{ url_for('static', filename='home/entry-cfaf52c5b8c8596faac8.css') }}">
-
-  <style type="text/css">
-</style></head>
 
 <body lang="zh-CN" class="reader-black-font">
     <!-- 全局顶部导航栏 -->
@@ -77,6 +76,8 @@
     </div>
   </div>
 </nav>
+
+{% block content %}{% endblock %}
 
     
 <div class="container index">
