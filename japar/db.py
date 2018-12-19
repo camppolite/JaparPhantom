@@ -11,7 +11,7 @@ def get_db():
     from urllib.parse import urlparse
     url = urlparse(os.environ['DATABASE_URL'])
     print(url)
-    
+
     try:
         from boto.s3.connection import S3Connection
     except ImportError:
