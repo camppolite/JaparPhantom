@@ -1,1 +1,1 @@
-web: gunicorn japar.run:app --log-file -
+web: gunicorn -b 0.0.0.0:443 japar.run:app --log-file -
