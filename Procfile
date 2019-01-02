@@ -1,1 +1,1 @@
-web: gunicorn -b 0.0.0.0:500 japar.run:app --log-file -
+web: gunicorn -b 0.0.0.0:5100 japar.run:app --log-file -
